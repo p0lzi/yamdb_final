@@ -1,4 +1,4 @@
-![example workflow](https://github.com/p0lzi/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![yamdb workflow](https://github.com/p0lzi/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 # Проект «API для Yatube»
 
