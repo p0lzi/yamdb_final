@@ -8,8 +8,8 @@ services:
     env_file:
       - ./.env
   web:
-    image: p0lzi/api_yamdb:latest
-#    build: ../api_yamdb/
+#    image: p0lzi/api_yamdb:latest
+    build: ../api_yamdb/
     restart: always
     volumes:
       - static_value:/app/static/
@@ -28,8 +28,8 @@ services:
       - static_value:/var/html/static/
       - media_value:/var/html/media/
 #      - redoc_yaml:/var/html/static/
-      - .static/redoc.yaml:/var/html/redoc/redoc.yaml
-      - .templates/redoc.html:/var/html/redoc/redoc.html
+      - ../api_yamdb/api/static/redoc.yaml:/var/html/static/redoc.yaml
+
     depends_on:
       - web
 
