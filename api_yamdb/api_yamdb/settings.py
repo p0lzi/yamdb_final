@@ -9,13 +9,9 @@ SECRET_KEY = os.getenv(
     'SECRET_KEY',
     default="p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs")
 
-
-DEBUG = False
-
+DEBUG = True if 'Windows' in os.environ.get('OS') else False
 
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', default='*')]
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,8 +59,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
-# Database
-
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE',
@@ -74,10 +68,11 @@ DATABASES = {
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default="postgres"),
         'HOST': os.getenv('DB_HOST', default="localhost"),
         'PORT': os.getenv('DB_PORT', default="5432"),
+    } if not os.getenv('USE_SQLITE', default=False) else {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-# Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,8 +93,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-
 LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
@@ -110,11 +103,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-
 STATIC_URL = '/static/'
-
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
