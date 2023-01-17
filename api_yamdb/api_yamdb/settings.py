@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv(
     'SECRET_KEY',
     default="p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs")
 
-DEBUG = True if 'Windows' in os.environ.get('OS') else False
+DEBUG = True if 'Windows' in os.environ.get('OS', default=None) else False
 
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', default='*')]
 
