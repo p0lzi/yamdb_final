@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv(
     'SECRET_KEY',
     default="p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs")
 
-DEBUG = True if 'Windows' in os.environ.get('OS', default=None) else False
+DEBUG = True if os.getenv('DEBUG', default=None) else False
 
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', default='*')]
 
@@ -68,7 +68,7 @@ DATABASES = {
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default="postgres"),
         'HOST': os.getenv('DB_HOST', default="localhost"),
         'PORT': os.getenv('DB_PORT', default="5432"),
-    } if not os.getenv('USE_SQLITE', default=False) else {
+    } if not os.getenv('DEBUG', default=False) else {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
